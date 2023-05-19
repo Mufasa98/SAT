@@ -1,2 +1,3 @@
-# Project-3
-Project 3
+# Team 10
+Members: Francis Crawford, Mufasa Naeem, Isabelle Roetcisoender, Isabel Sy
+
