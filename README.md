@@ -1,7 +1,7 @@
 # A Comprehensive Analysis of Student Academics Correlation with Retention and Graduation Rates
 Team 10 Members: Francis Crawford, Mufasa Naeem, Isabelle Roetcisoender, Isabel Sy
 
-The purpose of this project is to showcase knowledge reflective of course materials including data and delivery, back end knowledge, and visualizations. This project will cover the correlation between student academics or test scores (SAT, ACT scores), student retention rates, and student graduation rates. The information for this project is sourced from the United States Department of Education's [CollegeScoreCard website](https://collegescorecard.ed.gov/data/documentation/). This website is an online tool with data on college costs, graduation, and post-college earnings. The following components are covered in this project: 
+The purpose of this project is to showcase knowledge reflective of course materials including data and delivery, back end knowledge, and visualizations. This project will cover the correlation between student academics or test scores (SAT and ACT scores), student retention rates, and student graduation rates. The information for this project is sourced from the United States Department of Education's [CollegeScoreCard website](https://collegescorecard.ed.gov/data/documentation/). This website is an online tool with data on college costs, graduation, and post-college earnings. The following components are covered in this project: 
 
 ## Data and Delivery
 The requirements for data and delivery include clearly documented data components, a dataset that contains 500 unique records, and a database used to house the data. The project must be powered by Python Flask API and includes HTML/CSS, Javascript, and the chosen database. This analysis includes: 
