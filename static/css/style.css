@@ -1,4 +1,31 @@
-#map {
+/* Remove the default margin and padding from the body. */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* Set map, body, and html to 100% of the screen size. */
+#map,
+body,
+html {
+  height: 100%;
+}
+
+
+#map{
   position: absolute;
-  bottom: 0
+  bottom: -500px;
+  left: 50px;
+}
+
+#gauge {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+}
+
+#scatter {
+  position: absolute;
+  bottom: 0px;
+  left: +0px;
 }
