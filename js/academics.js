@@ -34,6 +34,94 @@ function buildMetadata(sample) {
   });
 }
 
+function buildChart(sample) {
+
+  //grab value points for graph
+  d3.json('../data/compiled_data.json').then((data) => {
+    //data[0] = access to the academics_clean portion of the json file
+    let academicValue = data[0].academics_clean[sample];
+    //initialize empty list to hold x and y values
+    let gradaution =[]
+    let retention =[]
+
+    let gradRates = academicValue['General Completion Rate'];
+    let retentionRates = academicValue['Retention Rate FT'];
+
+    //push that value into the scatterXvalues list
+    gradaution.push(gradRates);
+    retention.push(retentionRates);
+    
+    //Create the plot
+    let trace1 = {
+      x: ['graduation Rates'],
+      y: gradaution,
+      name: 'Graduation Rate',
+      type: 'bar',
+    };
+
+    let trace2 = {
+      x: ['Retention Rates'],
+      y: retention,
+      name: 'Retention Rate',
+      type: 'bar',
+    };
+
+  let layout = {
+    title: 'Graduation & Retention Rates',
+    yaxis: { title: 'Percentage Rate'}
+  };
+
+  Plotly.newPlot('bar', [trace1, trace2], layout);
+});
+
+};
+
+
+function createMarkers(sample) {
+
+  d3.json('../data/compiled_data.json').then((data) => {
+  // Pull the "stations" property from response.data.
+  let coordinValue = data[0].academics_clean[sample];
+
+  //initialize empty list to hold marker
+    objkeys = Object.keys(coordinValue);
+
+    let latait = coordinValue['Latitude'];
+    let longit = coordinValue['Longitutde'];
+  
+  // //school name, student count, admission rate, demographic percentage
+    let uniMarkers = L.marker([latait, longit])
+      .bindPopup("<h3>" + 'test' + "<h3><h3>Capacity: " + 'test' + "</h3>");
+  
+    let streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+
+  // Create a baseMaps object to hold the streetmap layer.
+    let baseMaps = {
+      "Street Map": streetmap
+    };
+
+// Create an overlayMaps object to hold the unimarkers layer.
+    let overlayMaps = {
+      "Unviversities": uniMarkers
+    };
+
+// Create the map object with options.
+    let map = L.map("map", {
+      center: [45.52, -122.67],
+      zoom: 4,
+      layers: [streetmap,uniMarkers]
+    });
+
+// Create a layer control, and pass it baseMaps and overlayMaps. Add the layer control to the map.
+    L.control.layers(baseMaps, overlayMaps, {
+      collapsed: false
+    }).addTo(map);
+    });
+  
+  };
+
 function init() {
   // Grab a reference to the dropdown select element
   let dropdown = d3.select('#selDataset');
@@ -46,75 +134,33 @@ function init() {
       dropdown.append('option').property('value', sampleNames[i]).text(sampleNames[i]);
     };
   buildMetadata(sampleNames[0]);
+  buildChart(sampleNames[0]);
+  createMarkers(sampleNames[0]);
+
+
+
   })};
 
 function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
-  buildMetadata(newSample)
+  buildMetadata(newSample);
+  buildChart(newSample);
+  createMarkers(newSample)
 };
 
 // Initialize the dashboard
 init();
 
-//grab value points for graph
-d3.json('../data/compiled_data.json').then((data) => {
-  //data[0] = access to the academics_clean portion of the json file
-  let  academicValues = data[0]; 
-  //initialize empty list to hold SAT Average Scores
-  let scatterXvalues =[]
-  //for loop to iterate through each university and grab the sat average value
-  for (let i = 0; i < academicValues.length; i++) {
-    let satAverage = academicValues[i]['SAT Average Overall'];
-  //push that value into the scatterXvalues list
-    scatterXvalues.push(academicValues[i]['SAT Average Overall']);
-    console.log(scatterXvalues);
 
-  //data[0] = access to the academics_clean portion of the json file
-  let  academicValues2 = data[0]; 
-    //initialize empty list to hold SAT Average Scores
-  let scatterYvalues =[]
-    //for loop to iterate through each university and grab the sat average value
-  for (let i = 0; i < academicValues2.length; i++) {
-    let retentionRate = academicValues2[i]['Retention Rate FT Overall'];
-    //push that value into the scatterXvalues list
-    scatterYvalues.push(academicValues[i]['Retention Rate FT Overall']);
-    console.log(scatterYvalues);
-    
-  };
-};
 
-  // Build Scatter 
-  var trace1 = {
-    x: [1, 2, 3, 4],
-    y: [10, 15, 13, 17],
-    mode: 'markers',
-    type: 'scatter'
-  };
-  
-  var trace2 = {
-    x: [2, 3, 4, 5],
-    y: [16, 5, 11, 9],
-    mode: 'lines',
-    type: 'scatter'
-  };
-  
-  var data = [trace1, trace2];
-  
-  Plotly.newPlot('scatter', data);
-    
-  });
 
-  //build map
-var myMap = L.map("map", {
-  center: [45.52, -122.67],
-  zoom: 13
-});
 
-// Adding a tile layer (the background map image) to our map:
-// We use the addTo() method to add objects to our map.
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(myMap);
+
+
+
+
+
+
 
 
 

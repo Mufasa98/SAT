@@ -14,7 +14,7 @@ html {
 
 #map{
   position: absolute;
-  bottom: -500px;
+  bottom: -1000px;
   left: 50px;
 }
 
@@ -26,6 +26,6 @@ html {
 
 #scatter {
   position: absolute;
-  bottom: 0px;
+  bottom: -200px;
   left: +0px;
 }
