@@ -10,7 +10,6 @@ function buildMetadata(sample) {
     // Use `.html("") to clear any existing metadata -- so it doesn't keep adding on 
     panel.html('')
 
-    // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
     for (i in sample_obj) {
       panel.append('h6').text(`${i}: ${sample_obj[i]}`);
@@ -76,44 +75,80 @@ function buildChart(sample) {
 
 };
 
+//initialize the map variable
+let map;
 
 function createMarkers(sample) {
+//rREMOVE AND CREATE NEW MAP CONTAINER CODE CREATED WITH CHATGPT.
+  // Remove the existing map container, if any
+  const existingMapContainer = document.getElementById('map');
+  if (existingMapContainer) {
+    existingMapContainer.remove();
+  }
+
+  // Create a new map container element
+  const newMapContainer = document.createElement('div');
+  newMapContainer.id = 'map';
+  newMapContainer.style.height = '500px';
+  newMapContainer.style.width = '1300px';
+
+  // Append the new map container to the desired parent element in the DOM
+  const parentElement = document.getElementById('map-container');
+  parentElement.appendChild(newMapContainer);
+
 
   d3.json('../data/compiled_data.json').then((data) => {
   // Pull the "stations" property from response.data.
-  let coordinValue = data[0].academics_clean[sample];
-
+    let coordinValue = data[0].academics_clean[sample];
   //initialize empty list to hold marker
     objkeys = Object.keys(coordinValue);
-
     let latait = coordinValue['Latitude'];
     let longit = coordinValue['Longitutde'];
   
-  // //school name, student count, admission rate, demographic percentage
-    let uniMarkers = L.marker([latait, longit])
-      .bindPopup("<h3>" + 'test' + "<h3><h3>Capacity: " + 'test' + "</h3>");
+    // pop-up info
+    let uniInfo = data[2].demograph[sample];
+    let schoolName = uniInfo['my_column_duplicate']; 
+
+    let studentIncome = data[6].income_clean[sample];
+    let medincome = studentIncome['Median Family Income'];
+    let lowIncome = studentIncome['% of Low Income that completed within 4 years']; 
+    let highIncome = studentIncome['% of High Income that completed 4 years'];
+
+    let customIcon = {
+    //icon came from:
+    //https://www.flaticon.com/free-icon/university_8074800?term=university&page=1&position=1&origin=search&related_id=8074800
+      iconUrl:'https://cdn-icons-png.flaticon.com/128/8074/8074800.png',
+      iconSize:[40,40]
+     };
+
+    let myIcon = L.icon(customIcon);
+    
+    let iconOptions = {
+      icon:myIcon
+     };
+    
+    let uniMarkers = L.marker([latait, longit],iconOptions)
+      .bindPopup("<h2>" + schoolName + "<h2><h3> Median Family Income: $"  + medincome + "</h3><h3>Low income students graduated: "  + lowIncome + "%</h3><h3>High income students graduated: "  + highIncome + "%</h3>");
   
     let streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
-
   // Create a baseMaps object to hold the streetmap layer.
     let baseMaps = {
       "Street Map": streetmap
     };
-
 // Create an overlayMaps object to hold the unimarkers layer.
     let overlayMaps = {
       "Unviversities": uniMarkers
     };
-
 // Create the map object with options.
     let map = L.map("map", {
       center: [45.52, -122.67],
-      zoom: 4,
+      zoom: 13,
       layers: [streetmap,uniMarkers]
     });
-
+    // Update the map's center to the new marker's position
+    map.panTo([latait, longit]);
 // Create a layer control, and pass it baseMaps and overlayMaps. Add the layer control to the map.
     L.control.layers(baseMaps, overlayMaps, {
       collapsed: false
@@ -121,7 +156,6 @@ function createMarkers(sample) {
     });
   
   };
-
 function init() {
   // Grab a reference to the dropdown select element
   let dropdown = d3.select('#selDataset');
@@ -133,6 +167,7 @@ function init() {
       //append the option tag's value (hence property) to whatever university 
       dropdown.append('option').property('value', sampleNames[i]).text(sampleNames[i]);
     };
+    
   buildMetadata(sampleNames[0]);
   buildChart(sampleNames[0]);
   createMarkers(sampleNames[0]);
@@ -149,6 +184,7 @@ function optionChanged(newSample) {
 };
 
 // Initialize the dashboard
+
 init();
 
 

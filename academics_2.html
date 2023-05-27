@@ -23,20 +23,18 @@
 
 <body>
 
-  <div class="container">
-    <div class="row">
+    
+    <div class="header">
       <div class="col-md-12 jumbotron text-center">
         <h1>Student Academics: Retention & Graduation Rates</h1>
-        <h2>For universitys in states that begin with letters A to F</h2>
-        <p>Use the interactive charts below to explore the dataset.
-          <p>0 values are non-reported indicators.</p>
-        </p>
+        <p>Use the dropdown to select a unviersity.</p> 
+        <p>Note: The universities are listed in alphabetical order by state.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2">
         <div class="well">
-          <h5>University</h5>
+          <h4>University</h4>
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
         <div class="panel panel-primary">
@@ -59,13 +57,15 @@
       </div>
     </div>
       <!-- supposed to show the map but lols -->
+    <div id="map-container">
       <div id="map" style="height: 500px; width: 1300px;"></div>
+    </div>
       
-  </div>
+ 
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="./js/academics.js"></script>
+  <script src="./js/academics_2.js"></script>
 
   
   

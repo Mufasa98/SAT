@@ -3,6 +3,13 @@ body {
   padding: 0;
   margin: 0;
 }
+.header{
+  grid-area: header;
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+}
 
 /* Set map, body, and html to 100% of the screen size. */
 #map,
@@ -20,8 +27,8 @@ html {
 
 #gauge {
   position: absolute;
-  top: 20%;
-  left: 50%;
+  top: 500px;
+  left: 1000px;
 }
 
 #scatter {
