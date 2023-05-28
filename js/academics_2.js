@@ -1,6 +1,6 @@
 function buildMetadata(sample) {
   d3.json('../data/compiled_data.json').then((data) => {
-    //demographics box change. ggs lols it was the square brackets! 
+    //demographics box change. 
     let sample_obj = data[2].demograph[sample];
     let averageSat = data[0].academics_clean[sample];
 
@@ -24,10 +24,9 @@ function buildMetadata(sample) {
     };
     
     let gLayout = {
-      width: 400,
+      width: 300,
       height: 200,
       title: 'SAT Average'
-
     };
   Plotly.newPlot('gauge', [gaugey], gLayout)
   });
@@ -46,7 +45,7 @@ function buildChart(sample) {
     let gradRates = academicValue['General Completion Rate'];
     let retentionRates = academicValue['Retention Rate FT'];
 
-    //push that value into the scatterXvalues list
+    //push those values into the empty lists
     gradaution.push(gradRates);
     retention.push(retentionRates);
     
@@ -79,7 +78,7 @@ function buildChart(sample) {
 let map;
 
 function createMarkers(sample) {
-//rREMOVE AND CREATE NEW MAP CONTAINER CODE CREATED WITH CHATGPT.
+//REMOVE AND CREATE NEW MAP CONTAINER CODE CREATED WITH CHATGPT.
   // Remove the existing map container, if any
   const existingMapContainer = document.getElementById('map');
   if (existingMapContainer) {
@@ -89,8 +88,8 @@ function createMarkers(sample) {
   // Create a new map container element
   const newMapContainer = document.createElement('div');
   newMapContainer.id = 'map';
-  newMapContainer.style.height = '500px';
-  newMapContainer.style.width = '1300px';
+  newMapContainer.style.height = '400px';
+  newMapContainer.style.width = '600px';
 
   // Append the new map container to the desired parent element in the DOM
   const parentElement = document.getElementById('map-container');
@@ -98,17 +97,19 @@ function createMarkers(sample) {
 
 
   d3.json('../data/compiled_data.json').then((data) => {
-  // Pull the "stations" property from response.data.
     let coordinValue = data[0].academics_clean[sample];
-  //initialize empty list to hold marker
+  //initialize empty list to hold lat/lon coordinates
     objkeys = Object.keys(coordinValue);
     let latait = coordinValue['Latitude'];
     let longit = coordinValue['Longitutde'];
   
-    // pop-up info
+    // variables for the pop-up information
+      //school names
     let uniInfo = data[2].demograph[sample];
-    let schoolName = uniInfo['my_column_duplicate']; 
+  
+    let schoolName = uniInfo['School Name']; 
 
+    //income information
     let studentIncome = data[6].income_clean[sample];
     let medincome = studentIncome['Median Family Income'];
     let lowIncome = studentIncome['% of Low Income that completed within 4 years']; 
@@ -123,11 +124,11 @@ function createMarkers(sample) {
 
     let myIcon = L.icon(customIcon);
     
-    let iconOptions = {
+    let iconOption = {
       icon:myIcon
      };
     
-    let uniMarkers = L.marker([latait, longit],iconOptions)
+    let uniMarkers = L.marker([latait, longit],iconOption)
       .bindPopup("<h2>" + schoolName + "<h2><h3> Median Family Income: $"  + medincome + "</h3><h3>Low income students graduated: "  + lowIncome + "%</h3><h3>High income students graduated: "  + highIncome + "%</h3>");
   
     let streetmap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -139,7 +140,7 @@ function createMarkers(sample) {
     };
 // Create an overlayMaps object to hold the unimarkers layer.
     let overlayMaps = {
-      "Unviversities": uniMarkers
+      "Universities": uniMarkers
     };
 // Create the map object with options.
     let map = L.map("map", {
