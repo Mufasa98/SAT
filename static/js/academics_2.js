@@ -161,8 +161,8 @@ function init() {
   // Grab a reference to the dropdown select element
   let dropdown = d3.select('#selDataset');
   // Use the list of sample names to populate the select options
-  d3.json('../data/schools.json').then((data) => {
-    let sampleNames = data;
+  d3.json('../data/compiled_data.json').then((data) => {
+    let sampleNames = data[7].schools;
     
     for (let i = 0; i < sampleNames.length; i++) {
       //append the option tag's value (hence property) to whatever university 
