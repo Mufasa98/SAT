@@ -1,0 +1,58 @@
+/* Remove the default margin and padding from the body. */
+body {
+  padding: 0;
+  margin: 0;
+}
+.header{
+  grid-area: header;
+  background-color: #526D82	;
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Arial';
+  color: #FFFF
+}
+
+.header2{
+  font-size: 25px;
+  text-align: center;
+  font-family: 'Arial';
+}
+
+.panel-title{
+  font-size: 25px;
+  font-family: 'Arial';
+  
+}
+
+.panel-body{
+  font-size: 25px;
+  font-family: 'Arial';
+  
+}
+
+
+#section-container {
+  position: relative;
+  top: 100px;
+  left: 200px;
+}
+
+#map {
+  position: relative;
+  bottom: +500px;
+  left: +700px;
+}
+
+
+#gauge {
+  position: relative;
+  bottom: +150px;
+  left: -150px;
+}
+
+#bar {
+  position: relative;
+  bottom: -100px;
+  left: +200px;
+}
