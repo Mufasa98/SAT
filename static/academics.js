@@ -1,3 +1,4 @@
+//build metadata literally builds the information thats being shown on the webpage
 function buildMetadata(sample) {
   d3.json('data/compiled.json').then((data) => {
     //demographics box change. 
