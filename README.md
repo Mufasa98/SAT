@@ -52,8 +52,13 @@ The actual queries for creating the tables and setting contraints is in the Sche
 
 
 ## Visualizations 
-The requirement for the visualizations portion includes a minimum of three unique views to reflect the data, multiple user-driven interactions, and a final page with user-friendly visualizations. This analysis includes :
-```-text 
--text 
--text
-```
+A githubpage (https://mufasa98.github.io/Project-3/) was initialized to showcase an overall summary of the study. 
+Utilizing HTML, (minor) CSS, and javascript's D3 library a json consisting of the compiled dataset was parsed, creating a dynamic webpage that changes as the user selects a university from the dropdown menu. 
+
+![image](https://github.com/Mufasa98/Project-3/blob/isy/images/js.png?raw=true)
+
+Again, the data was cleaned to fit the study's need, not all universities are included in the dropdown. 
+
+![image](https://github.com/Mufasa98/Project-3/blob/isy/images/demographics.png?raw=true)
+![image](https://github.com/Mufasa98/Project-3/blob/isy/images/visuals.png?raw=true)
+
