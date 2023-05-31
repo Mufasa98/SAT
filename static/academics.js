@@ -216,7 +216,7 @@ init();
 //Pomp and Circumstance composed by Sir Edward Elgar
 function playMusic(){
   let gradMusic = new Audio('music/pomp.mp3');
-  gradMusic.volume = 0.10;
+  gradMusic.volume = 0.30;
   gradMusic.play();
   }
 
