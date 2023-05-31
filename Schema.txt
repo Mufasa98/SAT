@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS academics_clean;/*Done*/
 DROP TABLE IF EXISTS clean_fafsa;/*Done*/
 DROP TABLE IF EXISTS demographics_clean;/*Done*/
-DROP TABLE IF EXISTS dependency_clean;/*Done*/
+DROP TABLE IF EXISTS dependency_df;/*Done*/
 DROP TABLE IF EXISTS gender_completion_clean;/*Done*/
 DROP TABLE IF EXISTS income_clean;/*Done*/
 
@@ -44,6 +44,7 @@ SELECT * FROM academics_clean;
 
 CREATE TABLE "clean_fafsa" (
     "School Name" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
     "City" varchar   NOT NULL,
     "Carnegie Classification Undergraduate Profile" float   NOT NULL,
     "Carnegie Size Setting" float   NOT NULL,
@@ -76,6 +77,7 @@ SELECT * FROM clean_fafsa;
 CREATE TABLE "demographics_clean" (
     "School Name" varchar   NOT NULL,
     "Student Count" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
     "School_Id" varchar   NOT NULL,
     "Requirement; 1:Yes, 2:Rec, 3:Na, 4:Dk, 5:Nan" float   NOT NULL,
     "Admission Rate" float   NOT NULL,
@@ -102,6 +104,7 @@ CREATE TABLE "dependency_df" (
     "School Name" varchar   NOT NULL,
     "% IndepStudents, LowIncome $0-$30,000" varchar   NOT NULL,
     "% Independent Students" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
     "% DepStudents, LowIncome $0-$30,000" float   NOT NULL,
     "% aided students family income $0-$30,000" float   NOT NULL,
     "% First Generation Students" float   NOT NULL,
@@ -175,6 +178,7 @@ SELECT * FROM dependency_df;
 CREATE TABLE gender_completion_clean(
     "School Name" varchar   NOT NULL,
     "School_Id" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
     "% Male Students Completed within 2yrs" varchar   NOT NULL,
     "% Male Students Completed within 3yrs" float   NOT NULL,
     "% Male Students Completed within 4yrs" float   NOT NULL,
@@ -195,6 +199,8 @@ CREATE TABLE gender_completion_clean(
     "% Female Students Withdrawn by 4yrs" float   NOT NULL,
     "% Female Students Withdrawn by 6yrs" float   NOT NULL,
     "% Female Students Withdrawn by 8yrs" float   NOT NULL,
+	"Latitude" float   NOT NULL,
+    "Longitutde" float   NOT NULL,
 
     CONSTRAINT "pk_gender_completion_clean" PRIMARY KEY (
         "School Name"
@@ -208,6 +214,7 @@ SELECT * FROM gender_completion_clean;
 CREATE TABLE income_clean(
     "School Name" varchar   NOT NULL,
     "Median Family Income" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
     "% of Low Income that completed within 4 years" float   NOT NULL,
     "% of Low Income that completed within 6 years" float   NOT NULL,
     "% of Low Income that completed within 8 years" float   NOT NULL,
@@ -244,13 +251,3 @@ CREATE TABLE income_clean(
 );
 
 SELECT * FROM income_clean
-
-
-
-
-
-
-
-
-
-
