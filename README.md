@@ -53,7 +53,9 @@ The actual queries for creating the tables and setting contraints is in the Sche
 
 ## Visualizations 
 A githubpage (https://mufasa98.github.io/Project-3/) was initialized to showcase an overall summary of the study. 
-Utilizing HTML, (minor) CSS, and javascript's D3 library a json consisting of the compiled dataset was parsed, creating a dynamic webpage that changes as the user selects a university from the dropdown menu. 
+Utilizing HTML, (minor) CSS, and JavaScript's D3 library a json consisting of the compiled dataset was parsed, creating a dynamic webpage that changes as the user selects a university from the dropdown menu. 
+
+The following image is a snippet of the JavaScript code. In this particular snippet the d3 library is used to select the html sample-metadata tag to update the data on the webpage when a new university is chosen by the user as well as the code to build the plotly gauge.
 
 ![image](https://github.com/Mufasa98/Project-3/blob/isy/images/js.png?raw=true)
 
@@ -61,4 +63,9 @@ Again, the data was cleaned to fit the study's need, not all universities are in
 
 ![image](https://github.com/Mufasa98/Project-3/blob/isy/images/demographics.png?raw=true)
 ![image](https://github.com/Mufasa98/Project-3/blob/isy/images/visuals.png?raw=true)
+
+Issues:
+One of the biggest issues faced during this process of the project was figuring out how to resize a leaflet map. This was resolved with the help of colleagues and intense web research. 
+
+Another issue that popped up was initialzing the github page. The html and css files would load in as source files; however, the JavaScript code would not. This was cause by the live server also being activated while trying to load the web page. Once the live server was disconnected, the webpage initialized properly. 
 
