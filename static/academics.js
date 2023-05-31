@@ -57,6 +57,17 @@ function buildChart(sample) {
       y: gradaution,
       name: 'Graduation Rate',
       type: 'bar',
+      text: gradaution.map(String),
+      textposition: 'auto',
+      hoverinfo: 'none',
+      marker: {
+        color: '#c7e8f3',
+        opacity: 0.75,
+        line: {
+        color:'#000000',
+        width: 1.5
+        }
+      }
     };
 
     let trace2 = {
@@ -64,11 +75,23 @@ function buildChart(sample) {
       y: retention,
       name: 'Retention Rate',
       type: 'bar',
+      text: retention.map(String),
+      textposition: 'auto',
+      hoverinfo: 'none',
+      marker: {
+        color: '#bf9aca',
+        opacity: 0.75,
+        line: {
+        color: '#000000',
+        width: 1.5
+        }
+      }
     };
 
   let layout = {
     title: 'Graduation & Retention Rates',
     yaxis: { title: 'Percentage Rate'}
+    
   };
 
   Plotly.newPlot('bar', [trace1, trace2], layout);
