@@ -189,8 +189,12 @@ function optionChanged(newSample) {
 // Initialize the dashboard
 init();
 
-
-
+//music source: https://www.youtube.com/watch?v=GgoDhs5lsBQ 
+//Pomp and Circumstance composed by Sir Edward Elgar
+function playMusic(){
+  let gradMusic = new Audio('music/pomp.mp3');
+  gradMusic.play();
+  }
 
 
 
