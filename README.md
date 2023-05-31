@@ -31,12 +31,24 @@ A for loop was created to get all the information from different pages of the AP
  ![image](https://github.com/Mufasa98/Project-3/assets/123531242/ace41250-6561-4548-8e6c-ebf5f2a53001)
 - Saving the DataFrames into CSVs and JSONs for SQL & JavaScript implementations
  ![image](https://github.com/Mufasa98/Project-3/assets/123531242/c8983754-23dd-46a5-90ca-2f2a6c403fae)
+ 
+ 
+- The next part of the Data Processing was plotting graphs using Matplotlib. We retrieved multiple different columns from different DataFrames that we had created to grapgh Scatter Plots to help   visualize any trends and corelations. We also displayed R Values to analyze the strength of the corelations:
+![image](https://github.com/Mufasa98/Project-3/assets/123531242/9a694045-2674-488b-aba6-28cf128d4b07)
+![image](https://github.com/Mufasa98/Project-3/assets/123531242/390d8c51-e0e3-4b48-b06c-f1752039276b)
+![image](https://github.com/Mufasa98/Project-3/assets/123531242/0af74ffc-3d01-4e0b-9000-2088aadc6a23)
+
+
+
 
 
 ## Data Storage
-After processing and cleaning the Data, we used PostGres to store the 6 individual DataFrames into SQL Schemas. We created the Tables in SQL and then imported our previously created CSVs files into the Schemas. We set constraints for all the tables to our main linked value = 'School Name'. Once the tables were made and values were imported, we ran a few queries to check if the values had pulled that was succesful.
+After processing and cleaning the Data, we used PostGress to store the 6 individual DataFrames into SQL Schemas. We created the Tables in SQL and then imported our previously created CSVs files into the Schemas. We set constraints for all the tables to our main linked value = 'School Name'. Once the tables were made and values were imported, we ran a few queries to check if the values had pulled that was succesful.
+![image](https://github.com/Mufasa98/Project-3/assets/123531242/e016a6dc-9872-47d0-9614-ba9078e54735)
+![image](https://github.com/Mufasa98/Project-3/assets/123531242/84726321-1a50-45b8-88e0-0330f3343ef7)
+![image](https://github.com/Mufasa98/Project-3/assets/123531242/b26d0a69-1d15-4290-bbc5-705228fceab5)
 
-
+The actual queries for creating the tables and setting contraints is in the Schema.txt file
 
 
 ## Visualizations 
