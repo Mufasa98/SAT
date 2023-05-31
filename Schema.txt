@@ -1,0 +1,253 @@
+DROP TABLE IF EXISTS academics_clean;/*Done*/
+DROP TABLE IF EXISTS clean_fafsa;/*Done*/
+DROP TABLE IF EXISTS demographics_clean;/*Done*/
+DROP TABLE IF EXISTS dependency_df;/*Done*/
+DROP TABLE IF EXISTS gender_completion_clean;/*Done*/
+DROP TABLE IF EXISTS income_clean;/*Done*/
+
+CREATE TABLE "academics_clean" (
+    "School Name" varchar   NOT NULL,
+    "% of Students receiving Federal Loan" varchar   NOT NULL,
+    "Title 4 Cost Private" float   NOT NULL,
+    "No.of programs offered" float   NOT NULL,
+    "Tuition FT Enrollment in $" float   NOT NULL,
+    "Enrollment" float   NOT NULL,
+    "Highest degree awarded" float   NOT NULL,
+    "SAT Writing Midpoint" float   NOT NULL,
+    "SAT Math Midpoint" float   NOT NULL,
+    "SAT Critical Reading Midpoint" float   NOT NULL,
+    "SAT Average Overall" float   NOT NULL,
+    "ACT Writing Midpoint" float   NOT NULL,
+    "ACT Math Midpoint" float   NOT NULL,
+    "ACT English Midpoint" float   NOT NULL,
+    "ACT Cumulative Midpoint" float   NOT NULL,
+    "Retention Rate FT" float   NOT NULL,
+    "Completion Rate 4 year (White)" float   NOT NULL,
+    "Completion Rate 4 year (2 Or More Races)" float   NOT NULL,
+    "Completion Rate 4 year (Hawaian/Pacific Islander)" float   NOT NULL,
+    "Completion Rate 4 year (Hispanic)" float   NOT NULL,
+    "Completion Rate 4 year (Black)" float   NOT NULL,
+    "Completion Rate 4 year (Asian)" float   NOT NULL,
+    "Completion Rate 4 year (American Indian)" float   NOT NULL,
+    "General Completion Rate" float   NOT NULL,
+    "id" float   NOT NULL,
+    "Latitude" float   NOT NULL,
+    "Longitutde for female students" float   NOT NULL,
+    
+    CONSTRAINT "pk_academics_clean" PRIMARY KEY (
+        "School Name"
+     )
+);
+
+SELECT * FROM academics_clean;
+
+
+CREATE TABLE "clean_fafsa" (
+    "School Name" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
+    "City" varchar   NOT NULL,
+    "Carnegie Classification Undergraduate Profile" float   NOT NULL,
+    "Carnegie Size Setting" float   NOT NULL,
+    "Public Average Net Price" float   NOT NULL,
+    "Private Average Net Price" float   NOT NULL,
+    "Avg $75,001-$110,000 (Public)" float   NOT NULL,
+    "Avg $75,000+ (Public)" float   NOT NULL,
+    "Avg $48,001-$75,000 (Public)" float   NOT NULL,
+    "Avg $48,001-$75,000 (All)" float   NOT NULL,
+    "Avg $30,001-$75,000 (Public)" float   NOT NULL,
+    "Avg $30,001-$75,000 (All)" float   NOT NULL,
+    "Avg $30,001-$48,000 (Public)" float   NOT NULL,
+    "Avg $30,001-$48,000 (All)" float   NOT NULL,
+    "Avg $110,000+ (Public)" float   NOT NULL,
+    "Avg $110,000+ (All)" float   NOT NULL,
+    "Avg $0-$48,000 (Public)" float   NOT NULL,
+    "Avg $0-$48,000 (Private)" float   NOT NULL,
+    "Avg $0-$30,000 (Public)" float   NOT NULL,
+    "Avg $0-$30,000 (Private)" float   NOT NULL,
+    
+    CONSTRAINT "pk_clean_fafsa" PRIMARY KEY (
+        "School Name"
+     )
+);
+
+SELECT * FROM clean_fafsa;
+
+
+
+CREATE TABLE "demographics_clean" (
+    "School Name" varchar   NOT NULL,
+    "Student Count" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
+    "School_Id" varchar   NOT NULL,
+    "Requirement; 1:Yes, 2:Rec, 3:Na, 4:Dk, 5:Nan" float   NOT NULL,
+    "Admission Rate" float   NOT NULL,
+    "4Yr Uni Completion Rates" float   NOT NULL,
+    "% White Students" float   NOT NULL,
+    "% Hispanic Students" float   NOT NULL,
+    "% Black Students" float   NOT NULL,
+    "% Asian Students" float   NOT NULL,
+    "% AIAN Students" float   NOT NULL,
+    "% Female Students" float   NOT NULL,
+    "% Male Students" float   NOT NULL,
+    "School Latitude" float   NOT NULL,
+    "School Longitude" float   NOT NULL,
+   
+    CONSTRAINT "pk_demographics_clean" PRIMARY KEY (
+        "School Name"
+     )
+);
+
+SELECT * FROM demographics_clean;
+
+
+CREATE TABLE "dependency_df" (
+    "School Name" varchar   NOT NULL,
+    "% IndepStudents, LowIncome $0-$30,000" varchar   NOT NULL,
+    "% Independent Students" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
+    "% DepStudents, LowIncome $0-$30,000" float   NOT NULL,
+    "% aided students family income $0-$30,000" float   NOT NULL,
+    "% First Generation Students" float   NOT NULL,
+    "% First Gen, Parents w/College" float   NOT NULL,
+    "% First Gen, Parents w/MiddleSchool" float   NOT NULL,
+    "% First Gen, Parents w/HighSchool" float   NOT NULL,
+    "% FirstGenStudents, Completed 2 Years" float   NOT NULL,
+    "% FirstGenStudents, Completed 3 Years" float   NOT NULL,
+    "% FirstGenStudents, Completed 4 Years" float   NOT NULL,
+    "% FirstGenStudents, Completed 6 Years" float   NOT NULL,
+    "% FirstGenStudents, Completed 8 Years" float   NOT NULL,
+    "% Students W/Bachelors Degree at 25 Years Old" float   NOT NULL,
+    "% Students Born Within the U.S." float   NOT NULL,
+    "% Population of White Students by ZIP Code" float   NOT NULL,
+    "% Population of Hispanic Students by ZIP Code" float   NOT NULL,
+    "% Population of Black Students by ZIP Code" float   NOT NULL,
+    "% Population of Asian Students by ZIP Code" float   NOT NULL,
+    "% Students W/Professional Deg at 25YrsbyZIP" float   NOT NULL,
+    "% IndepStudents Completed 2 Years" float   NOT NULL,
+    "% IndepStudents Completed 3 Years" float   NOT NULL,
+    "% IndepStudents Completed 4 Years" float   NOT NULL,
+    "% IndepStudents Completed 6 Years" float   NOT NULL,
+    "% IndepStudents Completed 8 Years" float   NOT NULL,
+    "% IndepStudents Withdrawn 2 Years" float   NOT NULL,
+    "% IndepStudents Withdrawn 3 Years" float   NOT NULL,
+    "% IndepStudents Withdrawn 4 Years" float   NOT NULL,
+    "% IndepStudents Withdrawn 6 Years" float   NOT NULL,
+    "% IndepStudents Withdrawn 8 Years" float   NOT NULL,
+    "% DepStudents Completed 2 Years" float   NOT NULL,
+    "% DepStudents Completed 3 Years" float   NOT NULL,
+    "% DepStudents Completed 4 Years" float   NOT NULL,
+    "% DepStudents Completed 6 Years" float   NOT NULL,
+    "% DepStudents Completed 8 Years" float   NOT NULL,
+    "% DepStudents Withdrawn 2 Years" float   NOT NULL,
+    "% DepStudents Withdrawn 3 Years" float   NOT NULL,
+    "% DepStudents Withdrawn 4 Years" float   NOT NULL,
+    "% DepStudents Withdrawn 6 Years" float   NOT NULL,
+    "% DepStudents Withdrawn 8 Years" float   NOT NULL,
+    "% NonFirstGenStudents Completed 2 Years" float   NOT NULL,
+    "% NonFirstGenStudents Completed 3 Years" float   NOT NULL,
+    "% NonFirstGenStudents Completed 4 Years" float   NOT NULL,
+    "% NonFirstGenStudents Completed 6 Years" float   NOT NULL,
+    "% NonFirstGenStudents Completed 8 Years" float   NOT NULL,
+    "% NonFirstGenStudents Withdrawn 2 Years" float   NOT NULL,
+    "% NonFirstGenStudents Withdrawn 3 Years" float   NOT NULL,
+    "% NonFirstGenStudents Withdrawn 4 Years" float   NOT NULL,
+    "% NonFirstGenStudents Withdrawn 6 Years" float   NOT NULL,
+    "% NonFirstGenStudents Withdrawn 8 Years" float   NOT NULL,
+    "% FirstGenStudents Completed 2 Years" float   NOT NULL,
+    "% FirstGenStudents Completed 3 Years" float   NOT NULL,
+    "% FirstGenStudents Completed 4 Years" float   NOT NULL,
+    "% FirstGenStudents Completed 6 Years" float   NOT NULL,
+    "% FirstGenStudents Completed 8 Years" float   NOT NULL,
+    "% FirstGenStudents Withdrawn 2 Years" float   NOT NULL,
+    "% FirstGenStudents Withdrawn 3 Years" float   NOT NULL,
+    "% FirstGenStudents Withdrawn 4 Years" float   NOT NULL,
+    "% FirstGenStudents Withdrawn 6 Years" float   NOT NULL,
+    "% FirstGenStudents Withdrawn 8 Years" float   NOT NULL,
+    "id" float   NOT NULL,
+    "Latitude" float   NOT NULL,
+    "Longitutde" float   NOT NULL,
+
+    CONSTRAINT "pk_dependency_df" PRIMARY KEY (
+        "School Name"
+     )
+);
+
+SELECT * FROM dependency_df;
+
+
+CREATE TABLE gender_completion_clean(
+    "School Name" varchar   NOT NULL,
+    "School_Id" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
+    "% Male Students Completed within 2yrs" varchar   NOT NULL,
+    "% Male Students Completed within 3yrs" float   NOT NULL,
+    "% Male Students Completed within 4yrs" float   NOT NULL,
+    "% Male Students Completed within 6yrs" float   NOT NULL,
+    "% Male Students Completed within 8yrs" float   NOT NULL,
+    "% Male Students Withdrawn by 2yrs" float   NOT NULL,
+    "% Male Students Withdrawn by 3yrs" float   NOT NULL,
+    "% Male Students Withdrawn by 4yrs" float   NOT NULL,
+    "% Male Students Withdrawn by 6yrs" float   NOT NULL,
+    "% Male Students Withdrawn by 8yrs" float   NOT NULL,
+    "% Female Students Completed within 2yrs" float   NOT NULL,
+    "% Female Students Completed within 3yrs" float   NOT NULL,
+    "% Female Students Completed within 4yrs" float   NOT NULL,
+    "% Female Students Completed within 6yrs" float   NOT NULL,
+    "% Female Students Completed within 8yrs" float   NOT NULL,
+    "% Female Students Withdrawn by 2yrs" float   NOT NULL,
+    "% Female Students Withdrawn by 3yrs" float   NOT NULL,
+    "% Female Students Withdrawn by 4yrs" float   NOT NULL,
+    "% Female Students Withdrawn by 6yrs" float   NOT NULL,
+    "% Female Students Withdrawn by 8yrs" float   NOT NULL,
+	"Latitude" float   NOT NULL,
+    "Longitutde" float   NOT NULL,
+
+    CONSTRAINT "pk_gender_completion_clean" PRIMARY KEY (
+        "School Name"
+     )
+);
+
+SELECT * FROM gender_completion_clean;
+
+
+
+CREATE TABLE income_clean(
+    "School Name" varchar   NOT NULL,
+    "Median Family Income" varchar   NOT NULL,
+	"SAT Average Overall" float   NOT NULL,
+    "% of Low Income that completed within 4 years" float   NOT NULL,
+    "% of Low Income that completed within 6 years" float   NOT NULL,
+    "% of Low Income that completed within 8 years" float   NOT NULL,
+    "% of Low Income that withdrew within 2 years" float   NOT NULL,
+    "% of Low Income that withdrew within 3 years" float   NOT NULL,
+    "% of Low Income that withdrew within 4 years" float   NOT NULL,
+    "% of Low Income that withdrew within 6 years" float   NOT NULL,
+    "% of Low Income that withdrew within 8 years" float   NOT NULL,
+    "% of Middle Income that completed within 3 years" float   NOT NULL,
+    "% of Middle Income that completed within 4 years" float   NOT NULL,
+    "% of Middle Income that completed within 6 years" float   NOT NULL,
+    "% of Middle Income that completed within 8 years" float   NOT NULL,
+    "% of Middle Income that withdrew within 2 years" float   NOT NULL,
+    "% of Middle Income that withdrew within 3 years" float   NOT NULL,
+    "% of Middle Income that withdrew within 4 years" float   NOT NULL,
+    "% of Middle Income that withdrew within 6 years" float   NOT NULL,
+    "% of Middle Income that withdrew within 8 years" float   NOT NULL,
+    "% of High Income that completed 3 years" float   NOT NULL,
+    "% of High Income that completed 4 years" float   NOT NULL,
+    "% of High Income that completed 6 years" float   NOT NULL,
+    "% of High Income that completed 8 years" float   NOT NULL,
+    "% of High Income that withdrew within 2 years" float   NOT NULL,
+    "% of High Income that withdrew within 3 years" float   NOT NULL,
+    "% of High Income that withdrew within 4 years" float   NOT NULL,
+    "% of High Income that withdrew within 6 years" float   NOT NULL,
+    "% of High Income that withdrew within 8 years" float   NOT NULL,
+    "id" float   NOT NULL,
+    "Latitude" float   NOT NULL,
+    "Longitude" float   NOT NULL,
+
+    CONSTRAINT "pk_income_clean" PRIMARY KEY (
+        "School Name"
+     )
+);
+
+SELECT * FROM income_clean
