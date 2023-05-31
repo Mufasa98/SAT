@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Student Academics: Retention & Graduation Rates</title>
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/style.css">
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
@@ -17,67 +17,75 @@
   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
           integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
           crossorigin=""></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" integrity="sha512-otONSJGv1l0LjJXcgyqi2MeKXtnthkiXAleeQjFJOKYcVD5u+mOuPb7xCnlsb74Ld+N0ONbP7KYRmW2/OWrvaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
 
-          
-
-
+  
 </head>
 
 <body style = 'background: #DDE6ED'>
-
   
-    <div class="header">
+
+  <div id="fullpage">
+    <div class="section"><div class="header">
       <div class="col-md-12 jumbotron text-center">
-        <h1>Student Academics: Retention & Graduation Rates</h1>
+        <h1>SATs and the affect on retention & graduation Rates</h1>
         <p>Use the dropdown to select a university.</p> 
         <p>Note: The universities are listed in alphabetical order by state.</p>
         <p>      Universities with no average SAT data are not included in the list below.
-                 Rates are shown as percentages
-        </p>
+                 Rates are shown as percentages</p>
       </div>
-    </div>
-    
-    <div class='header2'>
-      <div class="col-md-2">
-        <div class="well">
-          <h3>University:</h3>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+    </div></div>
+
+    <div class="section"><div class='header2'>
+        <div class="col-md-2">
+          <div class="well">
+            <h3>University:</h3>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
-    </div>
-      
+      </div>
+
+      <div>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">Demographic Info:</h3>
+            <h3 class="panel-title">General Information:</h3>
           </div>
           <div id="sample-metadata" class="panel-body"></div>
         </div>
       </div>
-      
-      <div id="section-container">
-        <div class="row">
-          <div class="col-md-4">
-            <div id="bar" style="height: 350px; width: 450px;"></div>
-          </div>
-          <div class="col-md-4">
-            <div id="gauge"></div>
-              <div id='needle'></div>
-          </div>
-          <div class="col-md-4">
-            <div id="map-container">
-              <div id="map"></div>
-            </div>
+    </div></div>
+    <div class="section"> <div id="section-container">
+      <div class="row">
+        <div class="col-md-4">
+          <div id="bar" style="height: 350px; width: 450px;"></div>
+        </div>
+        <div class="col-md-4">
+          <div id="gauge"></div>
+        </div>
+        <div class="col-md-4">
+          <div id="map-container">
+            <div id="map"></div>
           </div>
         </div>
-      </div>
-      
- 
+      </div></div>
+  </div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="static/css/academics.js"></script>
+  <script src="../static/academics.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js" integrity="sha512-LGiXf+jHGTHcIybSsOWO3I/in+OObCkcEsWIZ7IyhzfD6RzD5qDUw2CK+JveuI7zTSEcDG//bIOvOpAJW2BWsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  
-  
+  <script>
+    new fullpage('#fullpage', {
+    licenseKey: '80L08-6F1M9-85KEJ-JJ85I-PQXWQ',
+	  autoScrolling:true,
+	  scrollHorizontally: false
+    });
+  </script>
+
+
+
   </body>
   
   </html>
