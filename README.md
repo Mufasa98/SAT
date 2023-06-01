@@ -61,8 +61,8 @@ The following image is a snippet of the JavaScript code. In this particular snip
 
 Again, the data was cleaned to fit the study's need, not all universities are included in the dropdown. 
 
-![image](https://github.com/Mufasa98/Project-3/blob/isy/images/demographics.png?raw=true)
-![image](https://github.com/Mufasa98/Project-3/blob/isy/images/visuals.png?raw=true)
+![image](https://github.com/Mufasa98/Project-3/blob/isy/images/general%20info.png?raw=true)
+![image](https://github.com/Mufasa98/Project-3/blob/isy/images/graphs.png?raw=true)
 
 Issues:
 One of the biggest issues faced during this process of the project was figuring out how to resize a leaflet map. This was resolved with the help of colleagues and intense web research. 
