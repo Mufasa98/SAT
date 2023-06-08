@@ -52,7 +52,7 @@ The actual queries for creating the tables and setting contraints is in the Sche
 
 
 ## Visualizations 
-A githubpage (https://mufasa98.github.io/Project-3/) was initialized to showcase an overall summary of the study. 
+A githubpage (https://mufasa98.github.io/SAT/) was initialized to showcase an overall summary of the study. 
 Utilizing HTML, (minor) CSS, and JavaScript's D3 library a json consisting of the compiled dataset was parsed, creating a dynamic webpage that changes as the user selects a university from the dropdown menu. 
 
 The following image is a snippet of the JavaScript code. In this particular snippet the d3 library is used to select the html sample-metadata tag to update the data on the webpage when a new university is chosen by the user as well as the code to build the plotly gauge.
